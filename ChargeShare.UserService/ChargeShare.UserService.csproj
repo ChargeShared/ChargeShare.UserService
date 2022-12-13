@@ -25,4 +25,9 @@
 	<ItemGroup>
 		<ProjectReference Include="..\ChargeShare.Shared\ChargeShare.Shared\ChargeShare.Shared.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="DAL\Contexts\" />
+	  <Folder Include="DAL\Repositories\" />
+	</ItemGroup>
 </Project>
