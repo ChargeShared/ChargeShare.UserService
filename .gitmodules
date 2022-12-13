@@ -1,0 +1,3 @@
+[submodule "ChargeShare.Shared"]
+	path = ChargeShare.Shared
+	url = https://github.com/ChargeShared/ChargeShare.Shared
