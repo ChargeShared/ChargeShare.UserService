@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChargeShare.UserService", "ChargeShare.UserService\ChargeShare.UserService.csproj", "{4E8D2C32-21E5-4D36-AE97-63CF2FA2B417}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChargeShare.Shared", "ChargeShare.Shared\ChargeShare.Shared\ChargeShare.Shared.csproj", "{591C3753-0FA5-4762-A5E0-6E9966C550C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChargeShare.Shared", "ChargeShare.Shared\ChargeShare.Shared\ChargeShare.Shared.csproj", "{4A08D50F-CCB4-4662-91DA-851D59BE580D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{4E8D2C32-21E5-4D36-AE97-63CF2FA2B417}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E8D2C32-21E5-4D36-AE97-63CF2FA2B417}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E8D2C32-21E5-4D36-AE97-63CF2FA2B417}.Release|Any CPU.Build.0 = Release|Any CPU
-		{591C3753-0FA5-4762-A5E0-6E9966C550C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{591C3753-0FA5-4762-A5E0-6E9966C550C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{591C3753-0FA5-4762-A5E0-6E9966C550C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{591C3753-0FA5-4762-A5E0-6E9966C550C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A08D50F-CCB4-4662-91DA-851D59BE580D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A08D50F-CCB4-4662-91DA-851D59BE580D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A08D50F-CCB4-4662-91DA-851D59BE580D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A08D50F-CCB4-4662-91DA-851D59BE580D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
