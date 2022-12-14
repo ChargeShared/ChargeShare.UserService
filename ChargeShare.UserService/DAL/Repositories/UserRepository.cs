@@ -4,7 +4,7 @@ using Shared.Models;
 
 namespace ChargeShare.UserService.DAL.Repositories;
 
-public class UserRepository
+public class UserRepository : IUserRepository
 {
     private readonly UserContext _userContext;
 

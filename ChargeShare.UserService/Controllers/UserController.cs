@@ -1,5 +1,8 @@
-﻿using ChargeShare.UserService.DAL.DTOs;
+﻿using System.Net;
+using ChargeShare.UserService.DAL.DTOs;
+using ChargeShare.UserService.Services;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -9,11 +12,18 @@ namespace ChargeShare.UserService.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly IUserService _userService;
+
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         // GET: api/<UserController>
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "Hallo", "Falco" };
         }
 
         // GET api/<UserController>/5
@@ -25,12 +35,13 @@ namespace ChargeShare.UserService.Controllers
 
         // POST api/<UserController>
         [HttpPost]
-        public void Post([FromBody] UserRegisterDTO dataDto)
+        public async Task<HttpStatusCode> Post([FromBody] UserRegisterDTO dataDto)
         {
             //proces user
-            
+            _userService.RegisterUser(dataDto);
             //proces adres via messagebus
             //return confimation
+            return HttpStatusCode.OK;
         }
 
         // PUT api/<UserController>/5

@@ -5,16 +5,14 @@ using Shared.Models;
 
 namespace ChargeShare.UserService.Services;
 
-public class UserService
+public class UserService : IUserService
 {
     private readonly UserManager<ChargeSharedUserModel> _userManager;
-    private readonly SignInManager<ChargeSharedUserModel> _signInManager;
-    private readonly UserRepository _userRepository;
+    private readonly IUserRepository _userRepository;
 
-    public UserService(UserManager<ChargeSharedUserModel> userManager, SignInManager<ChargeSharedUserModel> signInManager, UserRepository userRepository)
+    public UserService(UserManager<ChargeSharedUserModel> userManager, IUserRepository userRepository)
     {
         _userManager = userManager;
-        _signInManager = signInManager;
         _userRepository = userRepository;
     }
 
@@ -31,9 +29,9 @@ public class UserService
 
         var result = await _userManager.CreateAsync(newUser, dataDto.Password);
 
-        if (result.Succeeded)
+        /*if (result.Succeeded)
         {
-            _userRepository.AddAsync(newUser);
-        }
+            await _userRepository.AddAsync(newUser);
+        }*/
     }
 }
