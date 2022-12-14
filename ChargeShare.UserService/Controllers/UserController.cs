@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ChargeShare.UserService.DAL.DTOs;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,8 +25,12 @@ namespace ChargeShare.UserService.Controllers
 
         // POST api/<UserController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] UserRegisterDTO dataDto)
         {
+            //proces user
+            
+            //proces adres via messagebus
+            //return confimation
         }
 
         // PUT api/<UserController>/5
