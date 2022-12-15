@@ -17,7 +17,7 @@ builder.Services.AddIdentity<ChargeSharedUserModel, IdentityRole<int>>().AddEnti
 
 builder.Services.AddDbContext<UserContext>(options =>
 {
-    options.UseSqlServer("Server=.; Database=peopledb3; Integrated Security=true; trustServerCertificate=true");
+    options.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=peopledb3; Trusted_Connection=True; trustServerCertificate=true");
 });
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
@@ -30,6 +30,18 @@ builder.Services.AddCors(options =>
     {
         policy.AllowCredentials().AllowAnyHeader().AllowAnyMethod();
     });
+});
+
+builder.Services.Configure<IdentityOptions>(opts =>
+{
+    //No requirements for password (pls only use for testing purposes)
+    opts.Password.RequireDigit = false;
+    opts.Password.RequireLowercase = false;
+    opts.Password.RequireUppercase = false;
+    opts.Password.RequireNonAlphanumeric = false;
+    opts.Password.RequireUppercase = false;
+    opts.Password.RequiredLength = 1;
+    opts.Password.RequiredUniqueChars = 0;
 });
 
 var app = builder.Build();

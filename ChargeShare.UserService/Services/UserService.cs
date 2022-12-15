@@ -16,7 +16,8 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public async Task RegisterUser(UserRegisterDTO dataDto)
+
+    public async Task<IEnumerable<IdentityError>> RegisterUser(UserRegisterDTO dataDto)
     {
         var newUser = new ChargeSharedUserModel
         {
@@ -24,14 +25,14 @@ public class UserService : IUserService
             LastName = dataDto.LastName,
             Email = dataDto.Email,
             MiddleName = dataDto.MiddleName,
-            DateOfBirth = dataDto.DateOfBirth
+            DateOfBirth = dataDto.DateOfBirth,
+            UserName = dataDto.Email
+            
         };
 
         var result = await _userManager.CreateAsync(newUser, dataDto.Password);
 
-        /*if (result.Succeeded)
-        {
-            await _userRepository.AddAsync(newUser);
-        }*/
+        //Care for Null reference, this will either send the errors back to be used for modelstate or send null back which the ModelState should have no issue with.
+        return !result.Succeeded ? result.Errors : null;
     }
 }

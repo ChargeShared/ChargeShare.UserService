@@ -1,8 +1,10 @@
-﻿using System.Net;
+﻿using System.Collections;
+using System.ComponentModel;
 using ChargeShare.UserService.DAL.DTOs;
 using ChargeShare.UserService.Services;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Models;
+using System.Net;
+using Microsoft.AspNetCore.Identity;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,6 +15,11 @@ namespace ChargeShare.UserService.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
+
+        /// <summary>
+        /// Used to save Errors for the ModelState since we decouple the ModelState by calling the service this is a workaround to have proper Http response logging
+        /// </summary>
+        private IEnumerable<IdentityError> _errors  { get; set; }
 
         public UserController(IUserService userService)
         {
@@ -37,10 +44,23 @@ namespace ChargeShare.UserService.Controllers
         [HttpPost]
         public async Task<HttpStatusCode> Post([FromBody] UserRegisterDTO dataDto)
         {
+            //Checks if the info is received properly in JSON format
+            if (ModelState.IsValid)
+            {
+                Console.WriteLine("Model is good!");
+                _errors = await _userService.RegisterUser(dataDto);
+            }
+            else
+            {
+                //Adds the errors to the modelstate which will be returned in JSON format on a failed POST
+                foreach (var error in _errors)
+                {
+                    ModelState.AddModelError(error.Code, error.Description);
+                }
+            }
             //proces user
-            _userService.RegisterUser(dataDto);
             //proces adres via messagebus
-            //return confimation
+
             return HttpStatusCode.OK;
         }
 
