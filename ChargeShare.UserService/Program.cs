@@ -17,7 +17,8 @@ builder.Services.AddIdentity<ChargeSharedUserModel, IdentityRole<int>>().AddEnti
 
 builder.Services.AddDbContext<UserContext>(options =>
 {
-    options.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=peopledb3; Trusted_Connection=True; trustServerCertificate=true");
+    /*options.UseSqlServer("Server=(localdb)\\mssqllocaldb; Database=peopledb3; Trusted_Connection=True; trustServerCertificate=true");*/
+    options.UseSqlServer("Server=.; Database=peopledb3; Trusted_Connection=True; trustServerCertificate=true");
 });
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
