@@ -5,6 +5,7 @@ using ChargeShare.UserService.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using Microsoft.AspNetCore.Identity;
+using Shared.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -47,8 +48,24 @@ namespace ChargeShare.UserService.Controllers
             //Checks if the info is received properly in JSON format
             if (ModelState.IsValid)
             {
+                //Process User data
                 Console.WriteLine("Model is good!");
                 _errors = await _userService.RegisterUser(dataDto);
+
+                //Process adres via messagebus
+                AdresModel adres = new AdresModel
+                {
+                    City = dataDto.City,
+                    Country = dataDto.Country,
+                    HouseAddition = dataDto.HouseAddition,
+                    HouseNumber = dataDto.HouseNumber,
+                    PostalCode = dataDto.PostalCode,
+                    Province = dataDto.Province,
+                    Region = dataDto.Region,
+                    Street = dataDto.Street
+                };
+
+
             }
             else
             {
@@ -58,8 +75,9 @@ namespace ChargeShare.UserService.Controllers
                     ModelState.AddModelError(error.Code, error.Description);
                 }
             }
-            //proces user
-            //proces adres via messagebus
+           
+            
+
 
             return HttpStatusCode.OK;
         }
