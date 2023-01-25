@@ -1,5 +1,6 @@
 ﻿using ChargeShare.UserService.DAL.DTOs;
 using Microsoft.AspNetCore.Identity;
+using Shared.Models;
 
 namespace ChargeShare.UserService.Services;
 
@@ -11,5 +12,5 @@ public interface IUserService
     /// <param name="dataDto">This is the IdentityUser/UserReigserDTO object, Make sure to check ModelState validity before saving</param>
     /// <returns>Either: <br/>- NULL on a successful save, Which ModelState can handle itself<br/>
     /// - An IdentityError IEnumerable if it fails ,which needs to be added to ModelStateErrors </returns>
-    Task<IEnumerable<IdentityError>> RegisterUser(UserRegisterDTO dataDto);
+    Task<ChargeSharedUserModel> RegisterUser(UserRegisterDTO dataDto);
 }
